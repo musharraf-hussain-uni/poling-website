@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="page">
+            <h1>Admin Login</h1>
+            <input type="text" id="admin-username" placeholder="Username" required>
+            <input type="password" id="admin-password" placeholder="Password" required>
+            <button id="admin-login-btn" click=()>Login</button>
+            <div id="admin-login-error"></div>
+        </div>
+    </div>
+
+    <script>
+        // Admin login
+        const adminUsernameInput = document.getElementById('admin-username');
+        const adminPasswordInput = document.getElementById('admin-password');
+        const adminLoginBtn = document.getElementById('admin-login-btn');
+        const adminLoginError = document.getElementById('admin-login-error');
+
+        adminLoginBtn.addEventListener('click', () => {
+            const adminUsername = adminUsernameInput.value;
+            const adminPassword = adminPasswordInput.value;
+
+            // Implement your custom admin authentication logic here
+            if (adminUsername === 'admin' && adminPassword === 'mushi123') {
+                alert('Successfully logged in!');
+                window.location.href = './createPoll.html'; // Redirect to createPoll page
+            } else {
+                adminLoginError.textContent = 'Invalid credentials.';
+            }
+        });
+    </script>
+</body>
+
+</html>

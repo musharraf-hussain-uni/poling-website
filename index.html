@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-time Polling Application</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>POLLING APPLICATION</h1>
+        <!-- Signup and Login Options -->
+        <div id="options">
+            <a href="./pages/adminLogin.html">
+                <button id="admin-btn">Admin</button>
+            </a>
+            <a href="./pages/login.html">
+                <button id="faculty-btn">Faculty Member</button></a>
+        </div>
+
+
+        <!-- Signup Page -->
+        <div id="signup-page" class="page">
+            <h2>Sign up</h2>
+            <input type="text" id="signup-name" placeholder="Name" required>
+            <input type="email" id="signup-email" placeholder="Email" required>
+            <input type="password" id="signup-password" placeholder="Password" required>
+            <p class="P"> Already have account?<a href="./pages/login.html">LogIn</a></p>
+            <input type="submit" value="Register" id="signup-btn">
+            <div id="signup-error"></div>
+
+        </div>
+
+
+    </div>
+    <script type="module" src="firebaseConfig.js"></script>
+    <script type="module" src="./javascript/index.js"></script>
+</body>
+
+</html>

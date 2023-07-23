@@ -24,7 +24,61 @@
         </div>
     </div>
 
-    <script>
+    <!-- Custom Box -->
+    <div id="custom-box" class="hidden">
+        <h3 id="box-poll-question"></h3>
+        <p id="box-option1"></p>
+        <p id="box-option2"></p>
+        <button id="close-box-btn">Close</button>
+    </div>
+
+    <script type="module">
+        // Admin Panel - Create Poll
+const createPollForm = document.getElementById('create-poll-form');
+const pollHeading = document.getElementById('poll-heading');
+const customBox = document.getElementById('custom-box');
+const boxPollQuestion = document.getElementById('box-poll-question');
+const boxOption1 = document.getElementById('box-option1');
+const boxOption2 = document.getElementById('box-option2');
+const closeBoxBtn = document.getElementById('close-box-btn');
+
+let pollNumber = 1; // Initialize the poll number to 1
+
+createPollForm.addEventListener('submit', (event) => {
+    event.preventDefault(); // Prevent form submission
+
+    // Get poll details from the form
+    const pollQuestion = document.getElementById('poll-question').value;
+    const option1 = document.getElementById('option1').value;
+    const option2 = document.getElementById('option2').value;
+
+    // Update the heading for the new form
+    pollNumber++;
+    pollHeading.textContent = `Admin Panel - Create a Poll ${pollNumber}`;
+
+    // Show the custom box with the data from the form
+    showCustomBox(pollQuestion, option1, option2);
+
+    // Clear form inputs for the next poll
+    createPollForm.reset();
+});
+
+// Initialize the heading with the initial poll number
+pollHeading.textContent = `Admin Panel - Create a Poll ${pollNumber}`;
+
+// Function to show the custom box with poll data
+function showCustomBox(pollQuestion, option1, option2) {
+    boxPollQuestion.textContent = `Poll Question: ${pollQuestion}`;
+    boxOption1.textContent = `Option 1: ${option1}`;
+    boxOption2.textContent = `Option 2: ${option2}`;
+
+    customBox.classList.remove('hidden');
+}
+
+// Close the custom box when the "Close" button is clicked
+closeBoxBtn.addEventListener('click', () => {
+    customBox.classList.add('hidden');
+});
 
     </script>
 </body>

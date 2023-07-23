@@ -52,7 +52,20 @@ button {
     border-radius: 5px;
     cursor: pointer;
 }
+.add{
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
 
+.adnlogout{
+    float: right;
+    padding: 3px 10px;
+}
 #options{
     margin-bottom: 20px;
     margin-left: 15vh;

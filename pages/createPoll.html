@@ -17,13 +17,13 @@
                 <input type="text" id="poll-question" placeholder="Poll Question" required>
                 <input type="text" id="option1" placeholder="Option 1" required>
                 <input type="text" id="option2" placeholder="Option 2" required>
-                <input type="submit" value="Create Poll">
+                <input type="submit" value="Add" class="add">
             </form>
-            <button id="logout-btn">Logout</button>
+
             <div id="poll-error"></div>
         </div>
     </div>
-
+    <button id="logout-btn" class="adnlogout">Logout</button>
     <!-- Custom Box -->
     <div id="custom-box" class="hidden">
         <h3 id="box-poll-question"></h3>
@@ -78,6 +78,16 @@ function showCustomBox(pollQuestion, option1, option2) {
 // Close the custom box when the "Close" button is clicked
 closeBoxBtn.addEventListener('click', () => {
     customBox.classList.add('hidden');
+});
+// ... (other code and functions)
+
+// Logout button click event listener
+const logoutBtn = document.getElementById('logout-btn');
+logoutBtn.addEventListener('click', () => {
+    // Implement your logout logic here (e.g., clearing any stored user data, logging out from the admin session, etc.)
+
+    // Redirect to the admin login page
+    window.location.href = './adminLogin.html';
 });
 
     </script>

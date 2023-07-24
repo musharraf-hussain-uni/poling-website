@@ -24,7 +24,7 @@
         <!-- Signup Page -->
         <div id="signup-page" class="page">
             <h2>Sign up</h2>
-            <input type="text" id="signup-name" placeholder="Name" required>
+            <input type="text" id="signup-name" placeholder="UserName" required>
             <input type="email" id="signup-email" placeholder="Email" required>
             <input type="password" id="signup-password" placeholder="Password" required>
             <p class="P"> Already have account?<a href="./pages/login.html">LogIn</a></p>
@@ -35,8 +35,102 @@
 
 
     </div>
-    <script type="module" src="firebaseConfig.js"></script>
-    <script type="module" src="./javascript/index.js"></script>
+    <script type="module" src="./javascript/signUp.js"></script>
 </body>
+<script type="module">
+
+    // Import the functions you need from the SDKs you need
+         import {
+                    initializeApp
+                } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+
+                import {
+                    getAnalytics
+                } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-analytics.js";
+                import {
+                    getAuth,
+                    createUserWithEmailAndPassword
+                } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
+                // TODO: Add SDKs for Firebase products that you want to use
+                // https://firebase.google.com/docs/web/setup#available-libraries
+
+                // Your web app's Firebase configuration
+                // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+                const firebaseConfig = {
+                    apiKey: "AIzaSyBInm5MUWt2mAHqyDuK0cDAHNwaKc6tueE",
+                    authDomain: "pollingweb-35951.firebaseapp.com",
+                    databaseURL: "https://pollingweb-35951-default-rtdb.firebaseio.com",
+                    projectId: "pollingweb-35951",
+                    storageBucket: "pollingweb-35951.appspot.com",
+                    messagingSenderId: "333304898073",
+                    appId: "1:333304898073:web:d1acb1c7581759c7684088",
+                    measurementId: "G-7F8Z21PX87"
+                };
+
+    // Signup page elements
+    const signupNameInput = document.getElementById('signup-name');
+    const signupEmailInput = document.getElementById('signup-email');
+    const signupPasswordInput = document.getElementById('signup-password');
+    const signupBtn = document.getElementById('signup-btn');
+    const signupError = document.getElementById('signup-error');
+
+
+    // Add input event listener to restrict characters in name field
+    signupNameInput.addEventListener('input', () => {
+        signupNameInput.value = signupNameInput.value.replace(/[^a-zA-Z ]/g, '');
+    });
+
+    // Signup event listener
+    signupBtn.addEventListener('click', () => {
+                var name = signupNameInput.value;
+                var email = signupEmailInput.value;
+                var password = signupPasswordInput.value;
+
+                // Validate input
+                if (name.trim() === '' || email.trim() === '' || password.trim() === '') {
+                    signupError.textContent = 'Please fill in all fields.';
+                    return;
+                }
+
+                // Validate email
+                if (!isValidEmail(email)) {
+                    signupError.textContent = 'Please enter a valid email address.';
+                    return;
+                }
+
+
+                // Email validation function
+                function isValidEmail(email) {
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    return emailRegex.test(email);
+                }
+           
+                // Initialize Firebase
+                const app = initializeApp(firebaseConfig);
+                const analytics = getAnalytics(app);
+                const auth = getAuth();
+    
+                    // Get input values
+                    var email = document.getElementById('signup-email').value;
+                    var password = document.getElementById('signup-password').value;
+                    var username = document.getElementById('signup-name').value;
+
+                    createUserWithEmailAndPassword(auth, email, password)
+                        .then((userCredential) => {
+                            // Signed in 
+                            const user = userCredential.user;
+                            alert('User Created!');
+                            // ...
+                        })
+                        .catch((error) => {
+                            const errorCode = error.code;
+                            const errorMessage = error.message;
+                            alert(errorMessage);
+                            // ..
+                        });
+                });
+            
+</script>
+
 
 </html>

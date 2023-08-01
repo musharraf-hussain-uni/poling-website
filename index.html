@@ -119,7 +119,11 @@
                         .then((userCredential) => {
                             // Signed in 
                             const user = userCredential.user;
-                            alert('User Created!');
+                            // Set(ref(analytics, 'users/' + user.uid),{ 
+                            //     username: username,
+                            //     email: email
+                            // })
+                            alert('User Created!', user);
                             // ...
                         })
                         .catch((error) => {

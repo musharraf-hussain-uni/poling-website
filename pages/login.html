@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -67,6 +66,7 @@ signInWithEmailAndPassword(auth, email, password)
         // })
         console.log("User LoggedIn:", user);
         alert("User LoggedIn:", user)
+        window.location.href = 'voting.html';
     // ...
 })
 .catch((error) => {
@@ -76,12 +76,7 @@ signInWithEmailAndPassword(auth, email, password)
     console.error("User loggedIn error:", errorCode, errorMessage);
     // ..
 });
-});
-
-
-
-
-                    
+});              
     </script>
 </body>
 

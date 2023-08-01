@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select your vote</title>
+
+
+
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 600px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        input[type="text"],
+        button {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        label {
+            display: block;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        #voting-form {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h3>Select your Vote</h3>
+        <div id="poll-question"></div>
+        <form id="voting-form">
+            <label>
+                <input type="radio" name="option" value="Option 1">
+                <span id="option1"></span>
+            </label>
+            <label>
+                <input type="radio" name="option" value="Option 2">
+                <span id="option2"></span>
+            </label>
+            <button id="vote-btn">Vote</button>
+        </form>
+    </div>
+
+
+
+
+    <script type="module">
+        // Retrieve poll details from local storage
+const question = localStorage.getItem('pollQuestion');
+const option1 = localStorage.getItem('option1');
+const option2 = localStorage.getItem('option2');
+
+// Display poll details on the voting page
+document.getElementById('poll-question').textContent = question;
+document.getElementById('option1').textContent = option1;
+document.getElementById('option2').textContent = option2;
+
+const votingForm = document.getElementById('voting-form');
+
+// Listen to form submission on voting page (You can handle voting logic here)
+votingForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const selectedOption = document.querySelector('input[name="option"]:checked').value;
+    console.log('Voted for:', selectedOption);
+    // Handle voting logic (e.g., update database, show results, etc.)
+    // You can add your own logic here based on your backend and database setup.
+});
+
+export { question, option1, option2 };
+
+    </script>
+</body>
+
+</html>

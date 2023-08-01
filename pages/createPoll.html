@@ -69,9 +69,8 @@ pollHeading.textContent = `Admin Panel - Create a Poll ${pollNumber}`;
 // Function to show the custom box with poll data
 function showCustomBox(pollQuestion, option1, option2) {
     boxPollQuestion.textContent = `Poll Question: ${pollQuestion}`;
-    boxOption1.textContent = `Option 1: ${option1}`;
-    boxOption2.textContent = `Option 2: ${option2}`;
-
+    boxOption1.textContent = `1) ${option1}`;
+    boxOption2.textContent = `2) ${option2}`;
     customBox.classList.remove('hidden');
 }
 
